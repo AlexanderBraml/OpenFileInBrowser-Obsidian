@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, normalizePath, TFile, Platform, Workspace } from 'obsidian';
 
 // Remember to rename these classes and interfaces!
 
@@ -19,7 +19,8 @@ export default class MyPlugin extends Plugin {
 		// This creates an icon in the left ribbon.
 		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
 			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
+			this.openFileInEdge(this.app.workspace.getActiveFile());
+			// new Notice(cmd);
 		});
 		// Perform additional things with the ribbon
 		ribbonIconEl.addClass('my-plugin-ribbon-class');
@@ -82,6 +83,22 @@ export default class MyPlugin extends Plugin {
 
 	}
 
+	openFileInEdge(file: TFile) {
+		var path = this.getAbsolutePathOfFile(file);
+		var cmd = "start msedge \"" + path + "\"";
+		const { exec } = require("child_process");
+		exec(cmd);
+	}
+
+	getAbsolutePathOfFile(file: TFile): string {
+		//@ts-ignore
+		const path = normalizePath(`${this.app.vault.adapter.basePath}/${file.path}`)
+		if (Platform.isDesktopApp && navigator.platform === "Win32") {
+			return path.replace(/\//g, "\\");
+		}
+		return path;
+	}
+
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 	}
@@ -98,7 +115,7 @@ class SampleModal extends Modal {
 
 	onOpen() {
 		const {contentEl} = this;
-		contentEl.setText('Woah!');
+		contentEl.setText("Bruh");
 	}
 
 	onClose() {
