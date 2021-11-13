@@ -5,6 +5,7 @@ Of course, the plugin can be changed by devs to be used with different applicati
 
 ## Usage
 Open a file (preferably a pdf-file) and click on the little paper plane on the left of Obsidian. This will open the currently open file in a new tab in Microsoft Edge.
+![demo.gif](https://github.com/Alexander-Braml/ObsidianPlugin-OpenInEdge/raw/master/demo.gif)
 
 ## How to adjust to your needs
 First of all, fork this repository. Then follow [this guide](https://github.com/obsidianmd/obsidian-sample-plugin#first-time-developing-plugins) to set everything up and compile the plugin.  
