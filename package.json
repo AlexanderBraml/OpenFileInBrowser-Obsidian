@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-open-in-edge",
+	"name": "obsidian-open-file-in-edge",
 	"version": "0.12.0",
-	"description": "Opens pdfs in MS edge.",
+	"description": "Open files in Microsoft Edge.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",

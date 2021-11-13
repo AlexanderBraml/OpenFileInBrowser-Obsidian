@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-open-in-edge",
-	"name": "Open PDF In Edge",
-	"version": "1.0.1",
+	"id": "obsidian-open-file-in-edge",
+	"name": "Open Files In Edge",
+	"version": "1.0",
 	"minAppVersion": "0.12.0",
-	"description": "Opens pdfs in MS edge.",
+	"description": "Open files in Microsoft Edge.",
 	"author": "Braml",
-	"authorUrl": "braml.xyz",
+	"authorUrl": "braml.eu",
 	"isDesktopOnly": true
 }

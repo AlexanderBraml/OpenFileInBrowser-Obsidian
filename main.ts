@@ -1,29 +1,13 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, normalizePath, TFile, Platform, Workspace } from 'obsidian';
+import { Plugin, normalizePath, TFile, Platform } from 'obsidian';
 
-// Remember to rename these classes and interfaces!
-
-interface MyPluginSettings {
-	mySetting: string;
-}
-
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
-
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class OpenInEdgePlugin extends Plugin {
 
 	async onload() {
-		await this.loadSettings();
 
-		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
-			// Called when the user clicks the icon.
+		const ribbonIconEl = this.addRibbonIcon('paper-plane', 'Open File In Edge', (evt: MouseEvent) => {
 			this.openFileInEdge(this.app.workspace.getActiveFile());
-			// new Notice(cmd);
 		});
-		// Perform additional things with the ribbon
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
+		ribbonIconEl.addClass('open-in-edge-ribbon-class');
 
 		// If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
 		// Using this function will automatically remove the event listener when this plugin is disabled.
@@ -53,13 +37,5 @@ export default class MyPlugin extends Plugin {
 			return path.replace(/\//g, "\\");
 		}
 		return path;
-	}
-
-	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-	}
-
-	async saveSettings() {
-		await this.saveData(this.settings);
 	}
 }
