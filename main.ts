@@ -25,7 +25,7 @@ export default class OpenInEdgePlugin extends Plugin {
 
 	openFileInEdge(file: TFile) {
 		var path = this.getAbsolutePathOfFile(file);
-		// adjust app to your needs, just make sure the command it works in a terminal
+		// adjust app_ to your needs, just make sure the command works in a terminal as intended
 		var app_ = "start msedge";
 		var cmd = app_ + " \"" + path + "\"";
 		const { exec } = require("child_process");
